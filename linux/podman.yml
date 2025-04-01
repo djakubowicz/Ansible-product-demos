@@ -19,11 +19,22 @@
         state: directory
         mode: "0775"
 
-    - name: Create index.html
-      ansible.builtin.copy:
-        dest: "{{ volume_path }}/index.html"
-        content: "{{ message }}"
-        mode: "0664"
+    - name: GIT pull
+      become: true
+      tags:
+        - git_pull
+      git:
+        repo: "https://github.com/djakubowicz/Ansible-product-demos/tree/cd855907785d798a8ba1c3322cd3310c3aa33ce7/website"
+        dest: "{{ volume_path }}"
+        update: yes
+        clone: no
+        version: master
+
+    #- name: Create index.html
+     # ansible.builtin.copy:
+      #  dest: "{{ volume_path }}/index.html"
+       # content: "{{ message }}"
+        #mode: "0664"
 
     - name: Run httpd container
       containers.podman.podman_container:
