@@ -4,16 +4,23 @@
   become: yes
   
   tasks:
-    - name: Update apt packages
-      apt:
-        update_cache: yes
-    
-    - name: Install NGINX
-      apt:
-        name: nginx
-        state: present
+    - name: Printing to terminal application information
+      ansible.builtin.debug:
+        msg: "This Ansible Playbook will install {{ application }}"
 
-    - name: Start NGINX
-      service:
-        name: nginx
-        state: started
+    - name: Install application
+      ansible.builtin.dnf:
+        name: "nginx"
+        allow_downgrade: true
+      register: result
+      notify: Printing to terminal application information
+
+    - name: Printing to terminal application information  # noqa: no-handler
+      ansible.builtin.debug:
+        msg: "The application: nginx was already installed"
+      when: not result.changed | bool
+
+  handlers:
+    - name: Printing to terminal application information
+      ansible.builtin.debug:
+        msg: "The application: nginx has been installed"
