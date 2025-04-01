@@ -18,7 +18,13 @@
         path: "{{ volume_path }}"
         state: directory
         mode: "0775"
-
+        
+    - name: Install Git
+      ansible.builtin.dnf:
+        name: git
+        state: installed
+      become: true
+      
     - name: GIT pull
       become: true
       tags:
