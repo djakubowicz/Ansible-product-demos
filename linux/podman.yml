@@ -31,7 +31,7 @@
         - git_pull
       git:
         repo: "https://github.com/djakubowicz/website.git"
-        dest: "/tmp/website"
+        dest: "/tmp/website/"
         update: yes
         clone: yes
         version: main
