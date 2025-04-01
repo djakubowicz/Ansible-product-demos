@@ -31,16 +31,16 @@
         - git_pull
       git:
         repo: "https://github.com/djakubowicz/website.git"
-        dest: "{{ volume_path }}"
+        dest: "/tmp"
         update: yes
         clone: yes
         version: master
-
-    #- name: Create index.html
-     # ansible.builtin.copy:
-      #  dest: "{{ volume_path }}/index.html"
-       # content: "{{ message }}"
-        #mode: "0664"
+    
+    - name: Create index.html
+      ansible.builtin.copy:
+        source: "/tmp/website"
+        dest: "{{ volume_path }}"
+        mode: "0664"
 
     - name: Run httpd container
       containers.podman.podman_container:
