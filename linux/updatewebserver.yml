@@ -3,6 +3,7 @@
   #hosts: "{{ _hosts | default(omit) }}"
   hosts: all
   become: yes
+  tasks:
     - name: Install Git
       ansible.builtin.dnf:
         name: git
