@@ -1,0 +1,41 @@
+---
+- name: web server installation
+  #hosts: "{{ _hosts | default(omit) }}"
+  hosts: all
+  become: yes
+    - name: Install Git
+      ansible.builtin.dnf:
+        name: git
+        state: installed
+      become: true
+      
+    - name: GIT pull
+      become: true
+      tags:
+        - git_pull
+      git:
+        repo: "https://github.com/djakubowicz/website.git"
+        dest: "/tmp/website/"
+        update: yes
+        clone: yes
+        version: main
+        
+    - name: update web site content
+      copy:
+        src: "/tmp/website/index-EN.html"
+        dest: "/var/www/html/index.html"
+        mode: "0755"
+        remote_src: yes
+
+    - name: Check Web Page
+      ansible.builtin.uri:
+        url: http://127.0.0.1:8081
+        return_content: true
+      register: web_output
+      changed_when: false
+
+    - name: Output
+      ansible.builtin.debug:
+        msg:
+          - "Contents of web page:"
+          - "{{ web_output.content }}"
