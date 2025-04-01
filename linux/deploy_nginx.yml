@@ -1,17 +1,19 @@
+---
 - name: Configure Web Server
-hosts: all
-become: yes
-tasks:
-  - name: Update apt packages
-    apt:
-    update_cache: yes
+  hosts: all
+  become: yes
+  
+  tasks:
+    - name: Update apt packages
+      apt:
+      update_cache: yes
     
-  - name: Install NGINX
-    apt:
+    - name: Install NGINX
+      apt:
       name: nginx
       state: present
 
-  - name: Start NGINX
-    service:
-    name: nginx
-    state: started
+    - name: Start NGINX
+      service:
+      name: nginx
+      state: started
