@@ -6,25 +6,8 @@
     message: "WebSite default"
 
   tasks:
-     
-    - name: Install Git
-      ansible.builtin.dnf:
-        name: git
-        state: installed
-      become: true
-      
-    - name: GIT pull
-      become: true
-      tags:
-        - git_pull
-      git:
-        repo: "https://github.com/djakubowicz/website.git"
-        dest: "/tmp/website/"
-        update: yes
-        clone: yes
-        version: main
-    
-    - name: Modify SElinux to prevent blcking the port change
+ 
+    - name: Modify SElinux to prevent blocking the port change
       lineinfile:
         path: /etc/sysconfig/selinux
         regexp: 'SELINUX=enforcing'
@@ -55,6 +38,23 @@
       service:
         name: httpd
         state: restarted
+     
+    - name: Install Git
+      ansible.builtin.dnf:
+        name: git
+        state: installed
+      become: true
+      
+    - name: GIT pull
+      become: true
+      tags:
+        - git_pull
+      git:
+        repo: "https://github.com/djakubowicz/website.git"
+        dest: "/tmp/website/"
+        update: yes
+        clone: yes
+        version: main
         
     - name: Create web site content
       copy:
