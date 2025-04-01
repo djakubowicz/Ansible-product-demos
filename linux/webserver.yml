@@ -13,6 +13,7 @@
         regexp: 'SELINUX=enforcing'
         line: 'SELINUX=disabled'
         state: present
+      become: true
     
     - name: Install apache2
       ansible.builtin.dnf:
