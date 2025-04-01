@@ -7,8 +7,11 @@
     message: "WebSite default"
 
   tasks:
- 
-    - name: Modify SElinux to prevent blocking the port change
+    - name: Disable SELinux
+      selinux:
+        state: disabled
+    
+    - name: Modify SElinux file to prevent blocking the port change at reboot
       lineinfile:
         path: /etc/sysconfig/selinux
         regexp: 'SELINUX=enforcing'
