@@ -22,22 +22,14 @@
         state: installed
       become: true
       
-    - name: Change Apache2 listening port from 80 to 8080
+    - name: Change Apache2 listening port from 80 to 8081
       lineinfile:
         path: /etc/httpd/conf/httpd.conf
         regexp: '^Listen 80'
-        line: 'Listen 8080'
+        line: 'Listen 8081'
         state: present
       become: true
-    
-    - name: Update default site configuration to use port 8081
-      lineinfile:
-        path: /etc/httpd/conf/httpd.conf
-        regexp: 'VirtualHost \*:80'
-        line: '<VirtualHost *:8081>'
-        state: present
-      become: true
-    
+      
     - name: Restart Apache2 to apply changes
       service:
         name: httpd
