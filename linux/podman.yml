@@ -36,8 +36,8 @@
         clone: yes
         version: main
     
-    - name: Create index.html
-      ansible.builtin.copy:
+    - name: Create web site content
+      copy:
         src: "/tmp/website/"
         dest: "{{ volume_path }}"
         mode: "0664"
