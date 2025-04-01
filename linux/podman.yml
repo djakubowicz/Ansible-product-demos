@@ -38,7 +38,7 @@
     
     - name: Create index.html
       ansible.builtin.copy:
-        source: "/tmp/website"
+        src: "/tmp/website"
         dest: "{{ volume_path }}"
         mode: "0664"
 
