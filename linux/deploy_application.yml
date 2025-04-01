@@ -1,6 +1,6 @@
 ---
 - name: Application deployment
-  hosts: "{{ _hosts | default('web') }}"
+  hosts: all
   gather_facts: false
   become: true
 
