@@ -40,7 +40,7 @@
       copy:
         src: "/tmp/website/"
         dest: "{{ volume_path }}"
-        mode: "0664"
+        mode: "0755"
         remote_src: yes
 
     - name: Run httpd container
