@@ -33,7 +33,7 @@
         repo: "https://github.com/djakubowicz/website.git"
         dest: "{{ volume_path }}"
         update: yes
-        clone: no
+        clone: yes
         version: master
 
     #- name: Create index.html
