@@ -34,7 +34,7 @@
         dest: "/tmp/website"
         update: yes
         clone: yes
-        version: master
+        version: main
     
     - name: Create index.html
       ansible.builtin.copy:
