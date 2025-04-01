@@ -4,7 +4,7 @@
   hosts: all
   vars:
     volume_path: podman
-    message: undef
+    message: "WebSite inside Podman"
 
   tasks:
     - name: Install Podman
