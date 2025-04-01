@@ -6,7 +6,7 @@
   tasks:
     - name: Printing to terminal application information
       ansible.builtin.debug:
-        msg: "This Ansible Playbook will install {{ application }}"
+        msg: "This Ansible Playbook will install nginx"
 
     - name: Install application
       ansible.builtin.dnf:
