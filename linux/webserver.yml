@@ -24,12 +24,26 @@
         clone: yes
         version: main
     
+    - name: Modify SElinux to prevent blcking the port change
+      lineinfile:
+        path: /etc/sysconfig/selinux
+        regexp: 'SELINUX=enforcing'
+        line: 'SELINUX=disabled'
+        state: present
+    
     - name: Install apache2
       ansible.builtin.dnf:
         name: httpd
         state: installed
       become: true
-
+      
+    - name: Change Apache2 listening port from 80 to 8080
+      lineinfile:
+        path: /etc/httpd/conf/httpd.conf
+        regexp: '^Listen 80'
+        line: 'Listen 8080'
+        state: present
+    
     - name: Update default site configuration to use port 8081
       lineinfile:
         path: /etc/httpd/conf/httpd.conf
