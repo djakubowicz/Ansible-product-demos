@@ -30,7 +30,7 @@
       tags:
         - git_pull
       git:
-        repo: "https://github.com/djakubowicz/Ansible-product-demos/tree/cd855907785d798a8ba1c3322cd3310c3aa33ce7/website"
+        repo: "https://github.com/djakubowicz/Ansible-product-demos.git/website"
         dest: "{{ volume_path }}"
         update: yes
         clone: no
