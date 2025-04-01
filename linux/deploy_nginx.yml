@@ -6,14 +6,14 @@
   tasks:
     - name: Update apt packages
       apt:
-      update_cache: yes
+        update_cache: yes
     
     - name: Install NGINX
       apt:
-      name: nginx
-      state: present
+        name: nginx
+        state: present
 
     - name: Start NGINX
       service:
-      name: nginx
-      state: started
+        name: nginx
+        state: started
