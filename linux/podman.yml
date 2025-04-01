@@ -41,6 +41,7 @@
         src: "/tmp/website"
         dest: "{{ volume_path }}"
         mode: "0664"
+        remote_src: yes
 
     - name: Run httpd container
       containers.podman.podman_container:
