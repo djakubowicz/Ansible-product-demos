@@ -1,6 +1,6 @@
 variable "aap_username" {
   description = "AAP console admin"
-  default = "ADMIN"
+  default = "admin"
 }
 
 variable "aap_password" {
