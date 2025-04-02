@@ -25,7 +25,7 @@ resource "aap_inventory" "my_inventory" {
 resource "aap_host" "create_host" {
   inventory_id = aap_inventory.my_inventory.id
   name = "192.169.101.101"
-#name         = aws_instance/example.public_ip
+#name         = aws_instance.example.public_ip
  }
 
 
