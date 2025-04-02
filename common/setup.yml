@@ -29,8 +29,8 @@ controller_credentials:
     update_secrets: false
     state: exists
     inputs:
-      username: open-environment-6ts44-admin
-      password: 335qTTdULv8f
+      username: open-environment-5ws62-admin
+      password: RdNxxy5yiIFe
 
 controller_inventory_sources:
   - name: AWS Inventory
