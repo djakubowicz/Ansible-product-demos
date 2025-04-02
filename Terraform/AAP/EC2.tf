@@ -13,7 +13,7 @@ resource "aws_instance" "example" {
   instance_type = "t2.micro"
   subnet_id = "${var.subnet_prv1}"
   security_groups = [data.aws_security_group.selected.id]
-  key_name = "DJKEY"
+  key_name = "aws-test-key"
 
   tags = {
         Name = "DJInstance1"
