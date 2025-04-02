@@ -1,9 +1,14 @@
 terraform {
   required_providers {
    aap = {
-        source = "ansible/aap"
-   } 
-  }
+        source = "tfo-apj-demos/aap"
+        version = "1.0.2"
+   }
+   http = {
+        source = "hashicorp/http"
+        version = "~> 3.0"
+   }
+ }
 }
 
 provider "aap" {
@@ -19,7 +24,8 @@ resource "aap_inventory" "my_inventory" {
 
 resource "aap_host" "create_host" {
   inventory_id = aap_inventory.my_inventory.id
-  name         = data.terraform_remote_state.aws-ec2.outputs.ec2_first_addr
+  name = "192.169.101.101"
+#name         = data.terraform_remote_state.aws-ec2.outputs.ec2_first_addr
  }
 
 
