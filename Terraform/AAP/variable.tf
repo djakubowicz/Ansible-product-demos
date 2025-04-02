@@ -5,17 +5,17 @@ variable "aap_username" {
 
 variable "aap_password" {
     description = "AAP user paswd"
-    default = "changeme"
+    default = "PASSWD"
 }
 
 variable "aap_host_url" {
     description = "URL for AAP"
-    default = "https://aap-aap.apps.cluster-6ts44-1.dynamic.redhatworkshops.io"
+    default = "https://aap-aap.apps.cluster-5ws62-1.dynamic.redhatworkshops.io"
 }
 
 variable "job_template_id" {
     description = "the job to launch"
-    default = 63  
+    default = "58"
 }
 
 variable "ami_id" {
@@ -25,15 +25,15 @@ variable "ami_id" {
 
 variable "subnet_prv1" {
   description = "Private Subnet 1"
-  default = "subnet-0e39ff451e3d0d3eb"
+  default = "subnet-06aa232b8e28dddfc"
 }
 
 variable "access" {
   description = "Access Key"
-  default = [PUT ACCESS KEY HERE]
+  default = "ACCESS"
 }
 
 variable "secret" {
   description = "Secret Key"
-  default = [PUT SECRET HERE]
+  default = "SECRET"
 }
