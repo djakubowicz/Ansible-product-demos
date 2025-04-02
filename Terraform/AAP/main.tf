@@ -1,40 +1,27 @@
-terraform {
-  required_providers {
-   aap = {
-        source = "tfo-apj-demos/aap"
-        version = "1.0.2"
-   }
-   http = {
-        source = "hashicorp/http"
-        version = "~> 3.0"
-   }
- }
+provider "aws" {
+  region = "us-east-1"
+  access_key = "${var.access}"
+  secret_key = "${var.secret}"
 }
 
-provider "aap" {
- host                 = var.aap_host_url
- username             = var.aap_username
- password             = var.aap_password
+data "aws_security_group" "selected" {
+  id ="sg-0ce818c00d069223d"
 }
 
-resource "aap_inventory" "my_inventory" {
-  name = "AXA_New_Inventory"
+resource "aws_instance" "example" {
+  ami           = "${var.ami_id}"
+  instance_type = "t2.micro"
+  subnet_id = "${var.subnet_prv1}"
+  security_groups = [data.aws_security_group.selected.id]
+  key_name = "DJKEY"
+
+  tags = {
+        Name = "DJInstance1"
+  }
 }
 
+resource "time_sleep" "instance" {
+  create_duration = "2m"
 
-resource "aap_host" "create_host" {
-  inventory_id = aap_inventory.my_inventory.id
-  name = "192.169.101.101"
-#name         = aws_instance.example.public_ip
- }
-
-
-resource "aap_job" "run_job_template" {
-  job_template_id = var.job_template_id
-  inventory_id    = aap_inventory.my_inventory.id
-  extra_vars = <<EOT
-{
- "inventory": "${aap_inventory.my_inventory.name}"
-}
-EOT
+  depends_on = [aws_instance.example]
 }
