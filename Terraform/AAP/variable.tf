@@ -15,7 +15,7 @@ variable "aap_host_url" {
 
 variable "job_template_id" {
     description = "the job to launch"
-    default = 61  
+    default = 63  
 }
 
 variable "ami_id" {
