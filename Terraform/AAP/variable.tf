@@ -5,7 +5,7 @@ variable "aap_username" {
 
 variable "aap_password" {
     description = "AAP user paswd"
-    default = "NTU1OTkw"
+    default = "changeme"
 }
 
 variable "aap_host_url" {
