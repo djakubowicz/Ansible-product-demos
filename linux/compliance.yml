@@ -1,6 +1,7 @@
 ---
 - name: Apply compliance profile
-  hosts: "{{ _hosts | default(omit) }}"
+  #hosts: "{{ _hosts | default(omit) }}"
+  hosts: all
   become: true
   vars:
     compliance_profile: undef
