@@ -1,0 +1,20 @@
+---
+- name: Start an AWS EC2 instance (AAP-friendly)
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  collections:
+    - amazon.aws
+
+  vars:
+    instance_id: "{{ instance_id }}"
+    region: "{{ region }}"
+
+  tasks:
+    - name: Stop the EC2 instance
+      amazon.aws.ec2_instance:
+        state: started
+        instance_ids:
+          - "{{ instance_id }}"
+        region: "{{ region }}"
