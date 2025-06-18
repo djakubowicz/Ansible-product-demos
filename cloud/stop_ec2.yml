@@ -1,0 +1,25 @@
+---
+- name: Stop an AWS EC2 instance with user input
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  collections:
+    - amazon.aws
+
+  vars_prompt:
+    - name: "instance_id"
+      prompt: "Enter the EC2 instance ID to stop"
+      private: no
+
+    - name: "region"
+      prompt: "Enter the AWS region (e.g. us-east-1)"
+      private: no
+
+  tasks:
+    - name: Stop the EC2 instance
+      amazon.aws.ec2_instance:
+        state: stopped
+        instance_ids:
+          - "{{ instance_id }}"
+        region: "{{ region }}"
