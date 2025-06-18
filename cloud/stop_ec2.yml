@@ -1,5 +1,5 @@
 ---
-- name: Stop an AWS EC2 instance with user input
+- name: Stop an AWS EC2 instance (AAP-friendly)
   hosts: localhost
   connection: local
   gather_facts: false
@@ -7,14 +7,9 @@
   collections:
     - amazon.aws
 
-  vars_prompt:
-    - name: "instance_id"
-      prompt: "Enter the EC2 instance ID to stop"
-      private: no
-
-    - name: "region"
-      prompt: "Enter the AWS region (e.g. us-east-1)"
-      private: no
+  vars:
+    instance_id: "{{ instance_id }}"
+    region: "{{ region }}"
 
   tasks:
     - name: Stop the EC2 instance
