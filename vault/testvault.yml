@@ -1,0 +1,76 @@
+---
+- name: web server installation
+  #hosts: "{{ _hosts | default(omit) }}"
+  hosts: all
+  become: yes
+  vars:
+    message: "WebSite default"
+
+  tasks:
+    - name: Disable SELinux
+      selinux:
+        state: disabled
+    
+    - name: Modify SElinux file to prevent blocking the port change at reboot
+      lineinfile:
+        path: /etc/sysconfig/selinux
+        regexp: 'SELINUX=enforcing'
+        line: 'SELINUX=disabled'
+        state: present
+      become: true
+    
+    - name: Install apache2
+      ansible.builtin.dnf:
+        name: httpd
+        state: installed
+      become: true
+      
+    - name: Change Apache2 listening port from 80 to 8081
+      lineinfile:
+        path: /etc/httpd/conf/httpd.conf
+        regexp: '^Listen 80'
+        line: 'Listen 8081'
+        state: present
+      become: true
+      
+    - name: Restart Apache2 to apply changes
+      service:
+        name: httpd
+        state: restarted
+     
+    - name: Install Git
+      ansible.builtin.dnf:
+        name: git
+        state: installed
+      become: true
+      
+    - name: GIT pull
+      become: true
+      tags:
+        - git_pull
+      git:
+        repo: "https://github.com/djakubowicz/website.git"
+        dest: "/tmp/website/"
+        update: yes
+        clone: yes
+        version: main
+        
+    - name: Create web site content
+      copy:
+        src: "/tmp/website/"
+        dest: "/var/www/html/"
+        mode: "0755"
+        remote_src: yes
+
+    - name: Check Web Page
+      ansible.builtin.uri:
+        url: http://127.0.0.1:8081
+        return_content: true
+      register: web_output
+      changed_when: false
+
+    - name: Output
+      ansible.builtin.debug:
+        msg:
+          - "Contents of web page:"
+          - "{{ web_output.content }}"
