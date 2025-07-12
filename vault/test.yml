@@ -6,19 +6,19 @@
   tasks:
     - name: Read the latest version of a kv2 secret from Vault via the remote host with userpass auth
         community.hashi_vault.vault_kv2_get:
-        url: https://rh-salandre-demo-public-vault-9ae71d4d.ead70d08.z1.hashicorp.cloud:8200/
-        path: aap
-        auth_method: userpass
-        username: david2
-        password: 'f6Gxb63AR!LcFD'
-      register: response
+          url: https://rh-salandre-demo-public-vault-9ae71d4d.ead70d08.z1.hashicorp.cloud:8200/
+          path: aap
+          auth_method: userpass
+          username: david2
+          password: 'f6Gxb63AR!LcFD'
+        register: response
   # equivalent API path is secret/data/hello
   
     - name: Display the results
         ansible.builtin.debug:
-        msg:
-          - "Secret: {{ response.secret }}"
-          - "Data: {{ response.data }} (contains secret data & metadata in kv2)"
-          - "Metadata: {{ response.metadata }}"
-          - "Full response: {{ response.raw }}"
-          - "Value of key 'password' in the secret: {{ response.secret.password }}"
+          msg:
+            - "Secret: {{ response.secret }}"
+            - "Data: {{ response.data }} (contains secret data & metadata in kv2)"
+            - "Metadata: {{ response.metadata }}"
+            - "Full response: {{ response.raw }}"
+            - "Value of key 'password' in the secret: {{ response.secret.password }}"
