@@ -13,3 +13,12 @@
         password: 'f6Gxb63AR!LcFD'
       register: response
   # equivalent API path is secret/data/hello
+  
+    - name: Display the results
+        ansible.builtin.debug:
+        msg:
+          - "Secret: {{ response.secret }}"
+          - "Data: {{ response.data }} (contains secret data & metadata in kv2)"
+          - "Metadata: {{ response.metadata }}"
+          - "Full response: {{ response.raw }}"
+          - "Value of key 'password' in the secret: {{ response.secret.password }}"
