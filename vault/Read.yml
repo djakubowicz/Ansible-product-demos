@@ -18,6 +18,6 @@
           - "Secret: {{ response.secret }}"
           - "Data: {{ response.data }} (same as secret in kv1)"
           - "Metadata: {{ response.metadata }} (response info in kv1)"
-          - "Password: {{ response.data.password }} (response info in kv1)"
+          - "Password: {{ response.secret.password }} (response info in kv1)"
           - "Full response: {{ response.raw }}"
 #this version works, dont forget to update the token
