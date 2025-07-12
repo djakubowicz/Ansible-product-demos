@@ -10,7 +10,7 @@
           path: aap
           auth_method: userpass
           username: david2
-          password: 'f6Gxb63AR!LcFD'
+          password: f6Gxb63AR!LcFD
         register: response
   # equivalent API path is secret/data/hello
   
