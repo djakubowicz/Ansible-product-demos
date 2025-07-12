@@ -19,3 +19,4 @@
           - "Data: {{ response.data }} (same as secret in kv1)"
           - "Metadata: {{ response.metadata }} (response info in kv1)"
           - "Full response: {{ response.raw }}"
+#this version works, dont forget to update the token
