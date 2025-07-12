@@ -1,0 +1,23 @@
+---
+- name: Test
+  hosts: localhost
+  collections:
+    - community.hashi_vault
+  tasks:
+    - name: read
+      community.hashi_vault.vault_read:
+        url: https://rh-salandre-demo-public-vault-9ae71d4d.ead70d08.z1.hashicorp.cloud:8200
+        path: /v1/aap/data/aap
+        auth_method: userpass
+        username: david2
+        password: f6Gxb63AR!LcFD
+      register: response
+
+    - name: Display the results
+      ansible.builtin.debug:
+        msg:
+          - "Secret: {{ response.secret }}"
+          - "Data: {{ response.data }} (same as secret in kv1)"
+          - "Metadata: {{ response.metadata }} (response info in kv1)"
+          - "Full response: {{ response.raw }}"
+          - "Value of key 'password' in the secret: {{ response.secret.password }}"
