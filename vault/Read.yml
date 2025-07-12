@@ -1,11 +1,11 @@
 ---
-- name: Test
+- name: ReadSecret
   hosts: localhost
   collections:
     - community.hashi_vault
   tasks:
     - name: read
-      community.hashi_vault.vault_read:
+      community.hashi_vault.vault_k2_get:
         url: https://rh-salandre-demo-public-vault-9ae71d4d.ead70d08.z1.hashicorp.cloud:8200
         path: /v1/aap/data/aap
         auth_method: userpass
