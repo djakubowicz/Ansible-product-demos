@@ -8,9 +8,7 @@
       community.hashi_vault.vault_k2_get:
         url: https://rh-salandre-demo-public-vault-9ae71d4d.ead70d08.z1.hashicorp.cloud:8200
         path: /v1/aap/data/aap
-        auth_method: userpass
-        username: david2
-        password: f6Gxb63AR!LcFD
+        token: hvs.CAESINbbTkC7BXJ-XcDgvtPE0DbPEkiq749aRJcmgkEBqRxdGikKImh2cy5jc04wNGdvemR6YzZXaU5lSVFRNnBLR2YuNW8yekkQ_bmGCg
       register: response
 
     - name: Display the results
