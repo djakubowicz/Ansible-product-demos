@@ -10,6 +10,8 @@
         engine_mount_point: /admin/aap
         path: aap
         token: hvs.CAESIKYn7K1xydTyWoORbL8NndUOgvBSyCJG6TuOD6p9wad7GikKImh2cy41NUo2a0pFdW9pNnNVYW5ZemhDYUk1akYuNW8yekkQrpCHCg
+
+        # path equivalent to /v1/admin/aap/data/aap
       register: response
 
     - name: Display the results
