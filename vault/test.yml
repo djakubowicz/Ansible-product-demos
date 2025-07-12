@@ -2,9 +2,11 @@
 - name: Vault that requires authentication via username and password
   hosts: localhost
   gather_facts: false
-  
+  collections:
+    - community.hashi_vault
+    
   tasks:
-    - name: Read the latest version of a kv2 secret from Vault via the remote host with userpass auth
+    - name: Read
         community.hashi_vault.vault_kv2_get:
           url: https://rh-salandre-demo-public-vault-9ae71d4d.ead70d08.z1.hashicorp.cloud:8200/
           path: aap
@@ -14,7 +16,7 @@
         register: response
   # equivalent API path is secret/data/hello
   
-    - name: Display the results
+    - name: Display
         ansible.builtin.debug:
           msg:
             - "Secret: {{ response.secret }}"
