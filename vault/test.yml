@@ -1,10 +1,15 @@
 ---
-- name: Read the latest version of a kv2 secret from Vault via the remote host with userpass auth
-  community.hashi_vault.vault_kv2_get:
-    url: https://rh-salandre-demo-public-vault-9ae71d4d.ead70d08.z1.hashicorp.cloud:8200/
-    path: hello
-    auth_method: userpass
-    username: david2
-    password: 'f6Gxb63AR!LcFD'
-  register: response
+- name: Vault that requires authentication via username and password
+  hosts: localhost
+  gather_facts: false
+  
+  tasks:
+    - name: Read the latest version of a kv2 secret from Vault via the remote host with userpass auth
+        community.hashi_vault.vault_kv2_get:
+        url: https://rh-salandre-demo-public-vault-9ae71d4d.ead70d08.z1.hashicorp.cloud:8200/
+        path: hello
+        auth_method: userpass
+        username: david2
+        password: 'f6Gxb63AR!LcFD'
+      register: response
   # equivalent API path is secret/data/hello
