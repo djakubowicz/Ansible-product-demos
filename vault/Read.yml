@@ -7,7 +7,7 @@
     - name: read
       community.hashi_vault.vault_kv2_get:
         url: https://rh-salandre-demo-public-vault-9ae71d4d.ead70d08.z1.hashicorp.cloud:8200
-        engine_mount_point: /v1/aap
+        engine_mount_point: /aap
         path: aap
         token: hvs.CAESIKYn7K1xydTyWoORbL8NndUOgvBSyCJG6TuOD6p9wad7GikKImh2cy41NUo2a0pFdW9pNnNVYW5ZemhDYUk1akYuNW8yekkQrpCHCg
       register: response
