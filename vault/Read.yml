@@ -5,7 +5,7 @@
     - community.hashi_vault
   tasks:
     - name: read
-      community.hashi_vault.vault_k2_get:
+      community.hashi_vault.vault_kv2_get:
         url: https://rh-salandre-demo-public-vault-9ae71d4d.ead70d08.z1.hashicorp.cloud:8200
         path: /v1/aap/data/aap
         token: hvs.CAESINbbTkC7BXJ-XcDgvtPE0DbPEkiq749aRJcmgkEBqRxdGikKImh2cy5jc04wNGdvemR6YzZXaU5lSVFRNnBLR2YuNW8yekkQ_bmGCg
