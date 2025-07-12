@@ -15,10 +15,6 @@
     - name: Display the results
       ansible.builtin.debug:
         msg:
-          #- "Secret: {{ response.secret }}"
-          #- "Data: {{ response.data }}"
-          #- "Metadata: {{ response.metadata }} "
           - "Password: {{ response.secret.password }})
-          #- "Full response: {{ response.raw }}"
-          
+                    
 #this version works, dont forget to update the token
