@@ -1,0 +1,11 @@
+---
+- name: showsurvey
+  hosts: localhost
+
+  tasks:
+    - name: Display the results
+      ansible.builtin.debug:
+        msg:
+          - "Code Appli : {{ appcode }})"
+          - "Key : {{ keyname }}"
+          - "Application Name : {{ appname }}"
