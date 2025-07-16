@@ -9,7 +9,7 @@
         url: https://rh-salandre-demo-public-vault-9ae71d4d.ead70d08.z1.hashicorp.cloud:8200
         engine_mount_point: /admin/aap
         path: aap
-        token: hvs.CAESICGYFTVhGLP1f_IgAYIClApJAWs7etd7LvZUGrWRbWmsGikKImh2cy51dG9NTG5WSWtyTHR1bGpBMUpaMWJUenMuNW8yekkQ7tGfCg
+        token: hvs.CAESIMJeILOOXF_-ovlIun3E3B3uW3v56OAn4bPcqpU_NNngGikKImh2cy5EandQbFI1OVZGNjFBeW5CbTRrZVRUd3YuNW8yekkQ7Y-gCg
 
         # path equivalent to /v1/admin/aap/data/aap
       register: response
